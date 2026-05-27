@@ -1,6 +1,10 @@
 # appfx-storage
 
-[![CI](https://img.shields.io/github/actions/workflow/status/Dongbumlee/appfx-storage/ci.yml?branch=main&label=CI)](https://github.com/Dongbumlee/appfx-storage/actions/workflows/ci.yml) [![PyPI version](https://img.shields.io/pypi/v/appfx-storage.svg)](https://pypi.org/project/appfx-storage/)
+[![CI](https://github.com/Dongbumlee/appfx-storage/actions/workflows/ci.yml/badge.svg)](https://github.com/Dongbumlee/appfx-storage/actions/workflows/ci.yml)
+[![Publish](https://github.com/Dongbumlee/appfx-storage/actions/workflows/publish.yml/badge.svg)](https://github.com/Dongbumlee/appfx-storage/actions/workflows/publish.yml)
+[![PyPI](https://img.shields.io/pypi/v/appfx-storage.svg)](https://pypi.org/project/appfx-storage/)
+[![Python versions](https://img.shields.io/pypi/pyversions/appfx-storage.svg)](https://pypi.org/project/appfx-storage/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Dongbumlee/appfx-storage/blob/main/LICENSE)
 
 Python helpers for Azure Storage Blob and Queue operations.
 
