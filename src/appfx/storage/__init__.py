@@ -3,7 +3,7 @@
 from .blob import AsyncStorageBlobHelper, BlobHelperConfig, StorageBlobHelper
 from .queue import AsyncStorageQueueHelper, StorageConfig, StorageQueueHelper
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 __all__ = [
     "AsyncStorageBlobHelper",
