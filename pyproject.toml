@@ -1,0 +1,97 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "appfx-storage"
+version = "0.1.0"
+description = "Python helpers for Azure Storage Blob and Queue operations."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+authors = [
+  { name = "DB Lee", email = "dongbum@outlook.com" },
+]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: System :: Archiving :: Backup",
+  "Typing :: Typed",
+]
+dependencies = [
+  "aiofiles>=23.2.0",
+  "azure-core>=1.29.0",
+  "azure-identity>=1.15.0",
+  "azure-storage-blob>=12.20.0",
+  "azure-storage-queue>=12.9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2",
+  "mypy>=1.9",
+  "pytest>=8.4",
+  "pytest-asyncio>=1.0",
+  "pytest-cov>=6.2",
+  "ruff>=0.5",
+  "twine>=6.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/Dongbumlee/appfx-storage"
+Repository = "https://github.com/Dongbumlee/appfx-storage.git"
+Issues = "https://github.com/Dongbumlee/appfx-storage/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["appfx*"]
+namespaces = true
+
+[tool.setuptools.package-data]
+"appfx.storage" = ["py.typed"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-ra --strict-config --strict-markers"
+testpaths = ["tests"]
+pythonpath = ["src"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+markers = [
+  "live: opt-in tests that exercise real Azure Storage resources",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["appfx.storage"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "RUF"]
+# Transitional: the scaffold still has long Azure error messages/docstrings that
+# should be wrapped during Track 2 polish; keep functional lint gates active now.
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+
+[tool.mypy]
+python_version = "3.12"
+files = ["src/appfx/storage"]
+strict = false
+warn_unused_configs = true
