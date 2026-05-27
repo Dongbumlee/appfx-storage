@@ -1,5 +1,7 @@
 # appfx-storage
 
+[![CI](https://img.shields.io/github/actions/workflow/status/Dongbumlee/appfx-storage/ci.yml?branch=main&label=CI)](https://github.com/Dongbumlee/appfx-storage/actions/workflows/ci.yml) [![PyPI version](https://img.shields.io/pypi/v/appfx-storage.svg)](https://pypi.org/project/appfx-storage/)
+
 Python helpers for Azure Storage Blob and Queue operations.
 
 The `appfx-storage` package exposes the `appfx.storage` import namespace. It
@@ -31,16 +33,19 @@ python -m pip install -e ".[dev]"
 
 ## Quickstart
 
-Set the storage account name before running examples. The helpers support
-connection strings, but public examples intentionally use account-name
-authentication with managed identity or Azure CLI credentials.
+Set the storage account name before running examples. When `account_name`
+is provided, the helpers use Azure Identity `DefaultAzureCredential`, so local
+development can authenticate with Azure CLI and Azure-hosted apps can use
+managed identity. Connection strings are supported, but examples intentionally
+prefer Entra ID authentication.
 
 ```bash
-set AZURE_STORAGE_ACCOUNT_NAME=your-storage-account
+export AZURE_STORAGE_ACCOUNT_NAME=your-storage-account
+az login
 ```
 
-Use managed identity or Azure CLI login for account-name authentication. Do not
-commit `.env` files, connection strings, account keys, or generated SAS URLs.
+Do not commit `.env` files, connection strings, account keys, or generated SAS
+URLs.
 
 ## Async blob usage
 
